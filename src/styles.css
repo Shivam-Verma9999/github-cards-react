@@ -1,0 +1,30 @@
+body {
+  font-family: "Roboto";
+}
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+.header {
+  text-align: center;
+  font-size: 30px;
+}
+
+.github-card {
+  display: flex;
+  height: 100px;
+  width: 60%;
+  margin: 10px auto;
+}
+.card-info {
+  flex: 1;
+  /* background: red; */
+  padding: 10px;
+}
+.username {
+  font-size: 22px;
+  font-weight: bold;
+}
+.user-image {
+  height: 100%;
+}
