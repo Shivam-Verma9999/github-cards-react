@@ -12,9 +12,14 @@ body {
 
 .github-card {
   display: flex;
-  height: 100px;
+  min-height: 100px;
   width: 60%;
   margin: 10px auto;
+  border: solid #dbdbdb 1px ;
+  padding: 10px;
+  border-radius: 5px;
+  position: relative;
+  animation: 1s anim forwards;
 }
 .card-info {
   flex: 1;
@@ -26,5 +31,24 @@ body {
   font-weight: bold;
 }
 .user-image {
-  height: 100%;
+  height: 120px;
+}
+.profileBtn{
+  background: #4890e0;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  margin-top: 10px;
+}
+@keyframes anim {
+  0%{
+    top: -30px;
+    opacity: 0;
+  }
+  100%{
+    top: 0;
+    opacity: 1;
+  }
 }

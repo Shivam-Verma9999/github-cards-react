@@ -16,14 +16,22 @@ class Form extends React.Component {
     this.setState({ searchQuery: event.target.value });
   };
 
-  onSubmit = async event => {
+  onSubmit = event => {
     event.preventDefault();
     let sq = this.state.searchQuery.trim();
     console.log(sq);
-    let profileData = await axios.get(`https://api.github.com/users/${sq}`);
-    this.props.addCard(profileData.data);
-    console.log(profileData.data.login);
-    this.setState({ searchQuery: "" });
+    axios.get(`https://api.github.com/users/${sq}`).then(
+      response => {
+        this.props.addCard(response.data);
+        console.log('response.data',response.data);
+        console.log('response.data.login',response.data.login);
+        this.setState({ searchQuery: '' });
+      }
+    ).catch(reason => {
+      console.log(reason);
+    }).finally(() => {
+      this.setState({ searchQuery: '' });
+    });
   };
 
   render() {
@@ -55,6 +63,7 @@ class Card extends React.Component {
         <div className="card-info">
           <div className="username">{this.props.name || "name : n/a"}</div>
           <div className="company">{this.props.company || "company: n/a"}</div>
+          <button className="profileBtn" onClick={() => { window.open(this.props.html_url, '_blank') }}>Goto profile</button>
         </div>
       </div>
     );
