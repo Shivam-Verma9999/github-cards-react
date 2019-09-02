@@ -54,7 +54,7 @@ class Form extends React.Component {
 class Card extends React.Component {
   render() {
     return (
-      <div className="github-card">
+      <div className="github-card" id={this.props.login}>
         <img
           className="user-image"
           src={this.props.avatar_url}
@@ -88,17 +88,21 @@ class App extends React.Component {
       cardDetails: []
     };
   }
+  scrollToWithinPage(id) {
+    window.location.href += `/#${id}`;
+  }
 
   addCard = cardData => {
     for (let card of this.state.cardDetails) {
       console.log(card.id, cardData.id);
       if (card.id === cardData.id) {
-        alert(`${cardData.login} already in list `);
+        // alert(`${cardData.login} already in list `);
+        this.scrollToWithinPage(cardData.login);
         return;
       }
     }
     this.setState((prevState, props) => {
-      return { cardDetails: [...prevState.cardDetails, cardData] };
+      return { cardDetails: [cardData, ...prevState.cardDetails] };
     });
     console.log(this.state.cardDetails);
   };

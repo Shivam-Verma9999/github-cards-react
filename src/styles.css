@@ -1,5 +1,6 @@
 body {
   font-family: "Roboto";
+  scroll-behavior: smooth;
 }
 .App {
   font-family: sans-serif;
